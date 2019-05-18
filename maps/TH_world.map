@@ -5,7 +5,7 @@
             <Viewport CameraPosition="0 0 180" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="2" Preset="0" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="180 0 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="0" Preset="1" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="0 180 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="1" Preset="2" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
-            <Viewport CameraPosition="-2.09728 3.307 -5.18997" CameraTarget="-0.231391 3.72144 -0.335905" CameraZoom="2.26013" GridHeight="3.5" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="false" />
+            <Viewport CameraPosition="-1.22252 3.2095 0.961913" CameraTarget="2.44139 -0.0524037 -0.813208" CameraZoom="2.26013" GridHeight="0" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
         </ViewportConfig>
         <Groups>
             <Group ID="0" Name="None" Visible="true" />
@@ -13,15 +13,22 @@
     </EditorSession>
     <MapData FogActive="false" FogColor="1 1 1 1" FogCulling="true" FogEnd="20" FogFalloffExp="1" FogStart="0" GlobalDecalMaxTris="300" Name="" SkyBoxActive="false" SkyBoxColor="1 1 1 1" SkyBoxTexture="../../../">
         <MapContents>
-            <FileIndex_StaticObjects NumOfFiles="1">
-                <File Id="0" Path="custom_stories/the_elevator/static_objects/TH_elevator.dae" />
+            <FileIndex_StaticObjects NumOfFiles="4">
+                <File Id="0" Path="custom_stories/amnesia-the-elevator/static_objects/TH_elevator.dae" />
+                <File Id="1" Path="static_objects/technical/plane_black/plane_black.dae" />
+                <File Id="2" Path="static_objects/cellarbase/ceiling/welder_corridor_extension.dae" />
+                <File Id="3" Path="static_objects/cellarbase/wall/door_way.dae" />
             </FileIndex_StaticObjects>
-            <FileIndex_Entities NumOfFiles="1">
-                <File Id="0" Path="custom_stories/the_elevator/entities/elevator_door/TH_elevator_door.ent" />
+            <FileIndex_Entities NumOfFiles="2">
+                <File Id="0" Path="custom_stories/amnesia-the-elevator/entities/elevator_door/TH_elevator_door.ent" />
+                <File Id="1" Path="entities/technical/block_box/block_box.ent" />
             </FileIndex_Entities>
             <FileIndex_Decals NumOfFiles="0" />
             <StaticObjects>
                 <StaticObject CastShadows="true" Collides="true" FileIndex="0" Group="0" ID="1" Name="ceiling_arched_1" Rotation="0 0 0" Scale="1.25 1.25 1.25" Tag="" WorldPos="0 0 0" />
+                <StaticObject CastShadows="true" Collides="true" FileIndex="1" Group="0" ID="10" Name="plane_black_plane_black_1" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="3.25 0 0" />
+                <StaticObject CastShadows="true" Collides="true" FileIndex="3" Group="0" ID="25" Name="wall_door_way_1" Rotation="3.14159 1.5708 3.14159" Scale="1 1 1" Tag="" WorldPos="1.75 0 0" />
+                <StaticObject CastShadows="true" Collides="true" FileIndex="2" Group="0" ID="27" Name="ceiling_welder_corridor_extension_1" Rotation="3.14159 1.5708 3.14159" Scale="1 1 1" Tag="" WorldPos="1.75 3.25 0" />
             </StaticObjects>
             <Primitives />
             <Decals />
@@ -54,7 +61,7 @@
                 <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="1 1 1 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="7" Name="BoxLight_2" Radius="1" Rotation="0 0 0" Scale="1.95364 0.25 0.25" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="1.95364 0.25 0.25" Tag="" WorldPos="0 3.64903 -0.25" />
                 <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="1 1 1 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="8" Name="BoxLight_3" Radius="1" Rotation="0 0 0" Scale="1.95364 0.25 0.25" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="1.95364 0.25 0.25" Tag="" WorldPos="0 3.63295 0.406235" />
                 <Billboard Active="true" BillboardColor="1 1 1 1" BillboardOffset="0" BillboardSize="2.5 2.5" BillboardType="FixedAxis" ConnectLight="" Group="0" HaloSourceSize="0.3 0.3 0.3" ID="9" IsHalo="false" MaterialFile="/home/barbora/.steam/steam/steamapps/common/Amnesia The Dark Descent/billboards/bb_white_halo.mat" Name="Billboard_1" Rotation="1.5708 0 0" Tag="" WorldPos="0 3.30497 0.134328" />
-                <Area Active="true" AreaType="Script" Group="0" ID="10" Mesh="" Name="ScareSound_1" Rotation="0 -0 0" Scale="1 1 1" Tag="" WorldPos="-0.5 3.5 -3.5">
+                <Area Active="true" AreaType="Script" Group="0" ID="13" Mesh="" Name="ScareSound_1" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="0.547618 -4.76837e-07 -3.18822">
                     <UserVariables>
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
@@ -64,7 +71,7 @@
                         <Var Name="MaxFocusDistance" Value="-1" />
                     </UserVariables>
                 </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="11" Mesh="" Name="ScareSound_2" Rotation="0 -0 0" Scale="1 1 1" Tag="" WorldPos="-0.5 3.5 -2">
+                <Area Active="true" AreaType="Script" Group="0" ID="15" Mesh="" Name="ScareSound_2" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-0.832399 3.60667 -3.18822">
                     <UserVariables>
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
@@ -74,7 +81,7 @@
                         <Var Name="MaxFocusDistance" Value="-1" />
                     </UserVariables>
                 </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="12" Mesh="" Name="ScareSound_3" Rotation="0 -0 0" Scale="1 1 1" Tag="" WorldPos="-2.5 3.5 -2">
+                <Area Active="true" AreaType="Script" Group="0" ID="16" Mesh="" Name="ScareSound_3" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-2.26005 1.56825 0.797329">
                     <UserVariables>
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
@@ -84,7 +91,7 @@
                         <Var Name="MaxFocusDistance" Value="-1" />
                     </UserVariables>
                 </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="13" Mesh="" Name="ScareSound_4" Rotation="0 -0 0" Scale="1 1 1" Tag="" WorldPos="1.5 3.5 -2">
+                <Area Active="true" AreaType="Script" Group="0" ID="17" Mesh="" Name="ScareSound_4" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="0.193795 1.43844 1.62652">
                     <UserVariables>
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
@@ -94,46 +101,25 @@
                         <Var Name="MaxFocusDistance" Value="-1" />
                     </UserVariables>
                 </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="14" Mesh="" Name="ScareSound_5" Rotation="0 -0 0" Scale="1 1 1" Tag="" WorldPos="1.5 3.5 -0.25">
+                <Entity Active="true" FileIndex="1" Group="0" ID="28" Name="DoorBlockBox" Rotation="0 0 0" Scale="0.75 5.75 1.25" Tag="" WorldPos="1.5 0 0.0205684">
                     <UserVariables>
+                        <Var Name="CastShadows" Value="true" />
+                        <Var Name="StaticPhysics" Value="false" />
+                        <Var Name="IsAffectedByDecal" Value="false" />
+                        <Var Name="CallbackFunc" Value="" />
+                        <Var Name="ConnectedProps" Value="" />
+                        <Var Name="ConnectionStateChangeCallback" Value="" />
+                        <Var Name="FullGameSave" Value="false" />
                         <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
+                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
                         <Var Name="PlayerInteractCallback" Value="" />
                         <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="ItemInteraction" Value="false" />
-                        <Var Name="MaxFocusDistance" Value="-1" />
+                        <Var Name="ContainedItem" Value="None" />
+                        <Var Name="DisableBreakable" Value="false" />
+                        <Var Name="IsInsanityVision" Value="false" />
+                        <Var Name="VisionMaxSanity" Value="30" />
                     </UserVariables>
-                </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="15" Mesh="" Name="ScareSound_6" Rotation="0 -0 0" Scale="1 1 1" Tag="" WorldPos="1.5 3.5 2">
-                    <UserVariables>
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="ItemInteraction" Value="false" />
-                        <Var Name="MaxFocusDistance" Value="-1" />
-                    </UserVariables>
-                </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="16" Mesh="" Name="ScareSound_7" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-1 3.5 2">
-                    <UserVariables>
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="ItemInteraction" Value="false" />
-                        <Var Name="MaxFocusDistance" Value="-1" />
-                    </UserVariables>
-                </Area>
-                <Area Active="true" AreaType="Script" Group="0" ID="17" Mesh="" Name="ScareSound_8" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-2.25 3.5 2">
-                    <UserVariables>
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="ItemInteraction" Value="false" />
-                        <Var Name="MaxFocusDistance" Value="-1" />
-                    </UserVariables>
-                </Area>
+                </Entity>
             </Entities>
             <Misc />
             <StaticObjectCombos />
