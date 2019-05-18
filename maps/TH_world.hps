@@ -1,8 +1,32 @@
-void OnStart()
+void OnEnter()
 {
-    ElevatorIntro();
+    PreloadSound("metal_walk.snt");
+    PreloadSound("metal_run.snt");
+    PreloadSound("TH_elevator_amb_loop.snt");
+    PreloadSound("TH_elevator_intro.snt");
+    PreloadSound("TH_elevator_door_open.snt");
+    PreloadSound("TH_elevator_door_close.snt");
+    PreloadSound("ui_terror_meter.snt");
+    PreloadSound("scare_steps_big.snt");
+    PreloadSound("scare_slam_door.snt");
+    PreloadSound("scare_tingeling.snt");
+    PreloadSound("scare_animal_squeal.snt");
+    PreloadSound("critter_rat_scare.snt");
+    PreloadSound("scare_wings.snt");
+    PreloadSound("scare_wood_creak_scuf.snt");
+    PreloadSound("scare_baby_cry.snt");
 }
 
+void OnStart()
+{
+    RegisterModularJumpscares();
+    RegisterModularHurtscares();
+    //ElevatorIntro();
+}
+
+// ============================================================================
+//  THE ELEVATOR INTRO
+// ============================================================================
 void ElevatorIntro(string t)
 {
     int stage = GetLocalVarInt("ElevatorIntro");
@@ -47,7 +71,12 @@ void ElevatorIntro(string t)
         PlayPropAnimation("ElevatorDoor", "Open", 0.0f, false, "");
         PlaySoundAtEntity("", "TH_elevator_door_open.snt", "ElevatorDoor", 0.0f, false);
         PlaySoundAtEntity("amb", "TH_world_amb_loop.snt", "Player", 4.0f, false);
-        delay = 1.0f;
+        StartRandomAmb();
+        delay = 4.0f;
+    }
+    else if(stage == 6)
+    {
+        StartBruteWalkEvent1("TestArea");
     }
     else
     {
@@ -59,3 +88,183 @@ void ElevatorIntro(string t)
 
 void ElevatorIntro() { ElevatorIntro(""); }
 
+// ============================================================================
+//  WALK - SCARE EVENT 1
+// ============================================================================
+void BruteWalkEvent1(string areaBase)
+{
+    int stage = GetLocalVarInt("BruteWalkEvent1");
+    AddLocalVarInt("BruteWalkEvent1", 1);
+    float delay = 0.0f;
+
+    int iterationNumber = GetLocalVarInt("Event1Iteration");
+    AddLocalVarInt("Event1Iteration", 1);
+
+    if(stage < 8)
+    {
+        PlaySoundAtEntity("", "metal_walk.snt", areaBase + "_" + iterationNumber, 0.0f, false);    
+        delay = 1.5f;
+    }
+    else
+    {
+        return;
+    }
+
+    AddTimer(areaBase, delay, "BruteWalkEvent1");
+}
+
+void StartBruteWalkEvent1(string areaBase) { SetLocalVarInt("BruteWalkEvent1", 0); SetLocalVarInt("Event1Iteration", 0); BruteWalkEvent1(areaBase); }
+
+// ============================================================================
+//  RUN - SCARE EVENT 2
+// ============================================================================
+void BruteRunEvent2(string areaBase)
+{
+    int stage = GetLocalVarInt("BruteRunEvent2");
+    AddLocalVarInt("BruteRunEvent2", 1);
+    float delay = 0.0f;
+
+    int iterationNumber = GetLocalVarInt("Event2Iteration");
+    AddLocalVarInt("Event2Iteration", 1);
+
+    if(stage < 8)
+    {
+        PlaySoundAtEntity("", "metal_run.snt", areaBase + "_" + iterationNumber, 0.0f, false);    
+        delay = 0.65f;
+    }
+    else
+    {
+        return;
+    }
+
+    AddTimer(areaBase, delay, "BruteRunEvent2");
+}
+
+void StartBruteRunEvent2(string areaBase) { SetLocalVarInt("BruteRunEvent2", 0); SetLocalVarInt("Event2Iteration", 0); BruteRunEvent2(areaBase); }
+
+// ============================================================================
+//  TERROR - SCARE EVENT 3
+// ============================================================================
+void StartTerror()
+{
+    PlaySoundAtEntity("terror", "ui_terror_meter.snt", "Player", 0.0f, false);
+    AddTimer("", RandFloat(2.0f, 7.0f), "StopTerror");
+}
+
+void StopTerror(string t)
+{
+    StopSound("terror", 0.5f);
+}
+
+// ============================================================================
+//  RANDOM SOUDS
+// ============================================================================
+string GetRandomSound()
+{
+    switch(RandInt(1, 8))
+    {
+        case 1: return "scare_steps_big.snt"; break;
+        case 2: return "scare_slam_door.snt"; break;
+        case 3: return "scare_tingeling.snt"; break;
+        case 4: return "scare_animal_squeal.snt"; break;
+        case 5: return "critter_rat_scare.snt"; break;
+        case 6: return "scare_wings.snt"; break;
+        case 7: return "scare_wood_creak_scuf.snt"; break;
+        case 8: return "scare_baby_cry.snt"; break;
+    }
+
+    return "";
+}
+
+string GetRandomArea(string base, int max)
+{
+    return base + RandInt(1, max);
+}
+
+void StartRandomAmb()
+{
+    SetLocalVarInt("StopRandSndFlag", 0);
+    PlayRandSound("");
+}
+
+void StopRandomAmb()
+{
+    SetLocalVarInt("StopRandSndFlag", 1);
+}
+
+void PlayRandSound(string timer)
+{
+    StopSound("randSound", 0.5f);
+    
+    string sound = GetRandomSound();
+    string area = GetRandomArea("ScareSound_", 4);
+
+    PlaySoundAtEntity("randSound", sound, area, 0.0f, false);
+
+    if(GetLocalVarInt("StopRandSndFlag") != 0) { return; }
+
+    AddTimer("", RandFloat(1.0f, 3.0f), "PlayRandSound");
+
+    if(PercentageChance(5)) { StartTerror(); }
+}
+
+bool PercentageChance(int percent)
+{
+    return RandInt(1, 100) < percent;
+}
+
+// ============================================================================
+//  MODULAR JUMPSCARE SYSTEM
+// ============================================================================
+void RegisterModularJumpscares()
+{
+    string areaBase = "Jumpscare_";
+    int count = 1;
+    while(GetEntityExists(areaBase + count))
+    {
+        AddEntityCollideCallback("Player", areaBase + count, "RunModularJumpscare", true, 0);
+        count++;
+    }
+}
+
+void RunModularJumpscare(string a, string area, int s)
+{
+    string entityBase = area + "_entity_";
+    SetEntityActiveByGroup(entityBase, true);
+    PlayGuiSound("ScareGui_" + RandInt(1, 7) + ".ogg", 1.0f);
+    GiveSanityDamage(1.0f, true);
+    AddTimer(entityBase, 1.0f, "DisableJumpscare");
+}
+
+void SetEntityActiveByGroup(string base, bool active)
+{
+    for(int i = 0; i < 10; i++)
+    {
+        SetEntityActive(base + i, active);
+        SetPropHealth(base + i, 0.0f);
+    }
+}
+
+void DisableJumpscare(string base)
+{
+    SetEntityActiveByGroup(base, false);
+}
+
+// ============================================================================
+//  MODULAR HURTSCARE SYSTEM
+// ============================================================================
+void RegisterModularHurtscares()
+{
+    string areaBase = "Hurtscare_";
+    int count = 1;
+    while(GetEntityExists(areaBase + count))
+    {
+        AddEntityCollideCallback("Player", areaBase + count, "RunModularHurtscare", true, 0);
+        count++;
+    }
+}
+
+void RunModularHurtscare(string a, string b, int s)
+{
+    GivePlayerDamage(5.0f, "Claws", true, false);
+}
