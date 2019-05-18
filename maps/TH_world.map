@@ -5,19 +5,19 @@
             <Viewport CameraPosition="0 0 180" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="2" Preset="0" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="180 0 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="0" Preset="1" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="0 180 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="1" Preset="2" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
-            <Viewport CameraPosition="-2.45552 3.71493 -2.35675" CameraTarget="1.28997 1.00829 0.0641386" CameraZoom="2.26013" GridHeight="0" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="false" />
+            <Viewport CameraPosition="-1.06979 3.53522 -2.51698" CameraTarget="-0.231391 3.72144 -0.335905" CameraZoom="3.06013" GridHeight="3.5" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="false" />
         </ViewportConfig>
         <Groups>
             <Group ID="0" Name="None" Visible="true" />
         </Groups>
     </EditorSession>
-    <MapData FogActive="false" FogColor="1 1 1 1" FogCulling="true" FogEnd="20" FogFalloffExp="1" FogStart="0" GlobalDecalMaxTris="300" Name="" SkyBoxActive="false" SkyBoxColor="1 1 1 1" SkyBoxTexture="../../../">
+    <MapData FogActive="false" FogColor="1 1 1 1" FogCulling="true" FogEnd="20" FogFalloffExp="1" FogStart="0" GlobalDecalMaxTris="300" Name="" SkyBoxActive="false" SkyBoxColor="1 1 1 1" SkyBoxTexture="../../../../../../../">
         <MapContents>
             <FileIndex_StaticObjects NumOfFiles="1">
-                <File Id="0" Path="custom_stories/the_elevator/static_objects/TH_elevator.dae" />
+                <File Id="0" Path="custom_stories/amnesia-the-elevator/static_objects/TH_elevator.dae" />
             </FileIndex_StaticObjects>
             <FileIndex_Entities NumOfFiles="1">
-                <File Id="0" Path="custom_stories/the_elevator/entities/elevator_door/TH_elevator_door.ent" />
+                <File Id="0" Path="custom_stories/amnesia-the-elevator/entities/elevator_door/TH_elevator_door.ent" />
             </FileIndex_Entities>
             <FileIndex_Decals NumOfFiles="0" />
             <StaticObjects>
@@ -29,7 +29,7 @@
                 <Area Active="true" AreaType="PlayerStart" Group="0" ID="0" Mesh="" Name="PlayerStartArea_1" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="-0.5 0 0">
                     <UserVariables />
                 </Area>
-                <Entity Active="true" FileIndex="0" Group="0" ID="3" Name="ElevatorDoor" Rotation="0 2.26498e-006 0" Scale="1.20794 1.20794 1.20794" Tag="" WorldPos="0.0619276 0 0.0206611">
+                <Entity Active="true" FileIndex="0" Group="0" ID="3" Name="ElevatorDoor" Rotation="0 2.26498e-06 0" Scale="1.20794 1.20794 1.20794" Tag="" WorldPos="0.0619276 0 0.0206611">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
                         <Var Name="StaticPhysics" Value="false" />
@@ -48,9 +48,12 @@
                         <Var Name="VisionMaxSanity" Value="30" />
                     </UserVariables>
                 </Entity>
-                <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="0.087 0.027 0.001 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="4" Name="BoxLight_1" Radius="1" Rotation="0 0 0" Scale="3.5 4.25 3" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="3.5 4.25 3" Tag="" WorldPos="0 1.75 0" />
+                <BoxLight Active="true" BlendFunc="1" CastShadows="false" DiffuseColor="0.087 0.027 0.001 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="4" Name="BoxLight_1" Radius="1" Rotation="0 0 0" Scale="3.5 4.25 3" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="3.5 4.25 3" Tag="" WorldPos="0 1.75 0" />
                 <SpotLight Active="true" Aspect="1" CastShadows="true" DiffuseColor="1 0.81 0.62 1" FOV="2.61799" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="5" Name="SpotLight_1" NearClipPlane="0.1" Radius="5.5" Rotation="-1.57079 0 0" Scale="1 1 1" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" SpotFalloffMap="" Tag="" WorldPos="0.25 3.8097 0" />
-                <SpotLight Active="true" Aspect="1" CastShadows="true" DiffuseColor="1 0.81 0.62 1" FOV="1.5708" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="6" Name="SpotLight_2" NearClipPlane="0.1" Radius="6.5" Rotation="-1.57079 -1.22718e-006 0.585323" Scale="1 1 1" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" SpotFalloffMap="" Tag="" WorldPos="0.25 3.46984 0" />
+                <SpotLight Active="true" Aspect="1" CastShadows="true" DiffuseColor="1 0.81 0.62 1" FOV="1.5708" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="6" Name="SpotLight_2" NearClipPlane="0.1" Radius="6.5" Rotation="-1.57079 -1.22718e-06 0.585323" Scale="1 1 1" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" SpotFalloffMap="" Tag="" WorldPos="0.25 3.46984 0" />
+                <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="1 1 1 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="7" Name="BoxLight_2" Radius="1" Rotation="0 0 0" Scale="1.95364 0.25 0.25" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="1.95364 0.25 0.25" Tag="" WorldPos="0 3.64903 -0.25" />
+                <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="1 1 1 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="8" Name="BoxLight_3" Radius="1" Rotation="0 0 0" Scale="1.95364 0.25 0.25" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="1.95364 0.25 0.25" Tag="" WorldPos="0 3.63295 0.406235" />
+                <Billboard Active="true" BillboardColor="1 1 1 1" BillboardOffset="0" BillboardSize="2.5 2.5" BillboardType="FixedAxis" ConnectLight="" Group="0" HaloSourceSize="0.3 0.3 0.3" ID="9" IsHalo="false" MaterialFile="/home/barbora/.steam/steam/steamapps/common/Amnesia The Dark Descent/billboards/bb_white_halo.mat" Name="Billboard_1" Rotation="1.5708 0 0" Tag="" WorldPos="0 3.30497 0.134328" />
             </Entities>
             <Misc />
             <StaticObjectCombos />
