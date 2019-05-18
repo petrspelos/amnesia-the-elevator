@@ -76,7 +76,7 @@ void ElevatorIntro(string t)
     }
     else if(stage == 6)
     {
-        StartBruteWalkEvent1("TestArea");
+        SetEntityActive("DoorBlockBox", false);
     }
     else
     {
@@ -176,9 +176,23 @@ string GetRandomSound()
     return "";
 }
 
-string GetRandomArea(string base, int max)
+string GetRandomArea(string base)
 {
+    int max = GetEntityCountByBase(base);
+    if(max == 0) { return ""; }
+
     return base + RandInt(1, max);
+}
+
+int GetEntityCountByBase(string base)
+{
+    int count = 0;
+    while(GetEntityExists(base + (count + 1)))
+    {
+        count++;
+    }
+
+    return count;
 }
 
 void StartRandomAmb()
@@ -197,7 +211,7 @@ void PlayRandSound(string timer)
     StopSound("randSound", 0.5f);
     
     string sound = GetRandomSound();
-    string area = GetRandomArea("ScareSound_", 4);
+    string area = GetRandomArea("ScareSound_");
 
     PlaySoundAtEntity("randSound", sound, area, 0.0f, false);
 
