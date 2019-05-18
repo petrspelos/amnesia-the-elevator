@@ -15,13 +15,23 @@ void OnEnter()
     PreloadSound("scare_wings.snt");
     PreloadSound("scare_wood_creak_scuf.snt");
     PreloadSound("scare_baby_cry.snt");
+    PreloadSound("unlock_door.snt");
 }
 
 void OnStart()
 {
     RegisterModularJumpscares();
     RegisterModularHurtscares();
+    RegisterModularKeys();
     ElevatorIntro();
+    AddEntityCollideCallback("Player", "CloseElevatorArea", "CloseElevator", true, 0);
+}
+
+void CloseElevator(string parent, string child, int state)
+{
+    CheckPoint("", "OutsideElevator", "", "", "");
+    PlayPropAnimation("ElevatorDoor", "Open", 0.0f, false, "");
+    SetEntityActive("DoorBlockBox", true);
 }
 
 // ============================================================================
@@ -281,4 +291,25 @@ void RegisterModularHurtscares()
 void RunModularHurtscare(string a, string b, int s)
 {
     GivePlayerDamage(5.0f, "Claws", true, false);
+}
+
+// ============================================================================
+//  MODULAR KEY SYSTEM
+// ============================================================================
+void RegisterModularKeys()
+{
+    string areaBase = "Key_";
+    int count = 1;
+    while(GetEntityExists(areaBase + count))
+    {
+        AddUseItemCallback("", areaBase + count, "Door_" + count, "UnlockDoor", true);
+        count++;
+    }
+}
+
+void UnlockDoor(string item, string entity)
+{
+    PlaySoundAtEntity("", "unlock_door.snt", entity, 0.0f, false);
+    RemoveItem(item);
+    SetSwingDoorLocked(entity, false, true);
 }
