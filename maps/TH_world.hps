@@ -1,0 +1,61 @@
+void OnStart()
+{
+    ElevatorIntro();
+}
+
+void ElevatorIntro(string t)
+{
+    int stage = GetLocalVarInt("ElevatorIntro");
+    AddLocalVarInt("ElevatorIntro", 1);
+    float delay = 0.0f;
+
+    if(stage == 0)
+    {
+        FadeOut(0.0f);
+        SetPlayerActive(false);
+        PlaySoundAtEntity("amb", "TH_elevator_amb_loop.snt", "Player", 5.0f, false);
+        delay = 8.0f;
+    }
+    else if(stage == 1)
+    {
+        PlayMusic("TH_elevator_music.ogg", false, 1.0f, 1.0f, 1, false);
+        delay = 7.0f;
+    }
+    else if(stage == 2)
+    {
+        StartScreenShake(0.001f, 10.0f, 0.0f, 0.1f);
+        FadeIn(2.0f);
+        SetPlayerActive(true);
+        delay = 10.0f;
+    }
+    else if(stage == 3)
+    {
+        StopSound("amb", 0.0f);
+        PlayGuiSound("elevator_stop.ogg", 1.0f);
+        GiveSanityDamage(1.0f, true);
+        StopMusic(0.0f, 1);
+        StartScreenShake(0.1f, 1.0f, 0.0f, 0.1f);
+        delay = 2.0f;
+    }
+    else if(stage == 4)
+    {
+        PlaySoundAtEntity("", "TH_elevator_intro.snt", "Player", 0.0f, false);    
+        delay = 5.0f;
+    }
+    else if(stage == 5)
+    {
+        PlayPropAnimation("ElevatorDoor", "Open", 0.0f, false, "");
+        PlaySoundAtEntity("", "TH_elevator_door_open.snt", "ElevatorDoor", 0.0f, false);
+        PlaySoundAtEntity("amb", "TH_world_amb_loop.snt", "Player", 4.0f, false);
+        delay = 1.0f;
+    }
+    else
+    {
+        return;
+    }
+
+    AddTimer("", delay, "ElevatorIntro");
+}
+
+void ElevatorIntro() { ElevatorIntro(""); }
+
