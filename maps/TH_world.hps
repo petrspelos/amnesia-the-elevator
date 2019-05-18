@@ -21,7 +21,7 @@ void OnStart()
 {
     RegisterModularJumpscares();
     RegisterModularHurtscares();
-    //ElevatorIntro();
+    ElevatorIntro();
 }
 
 // ============================================================================
