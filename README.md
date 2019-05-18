@@ -1,3 +1,3 @@
-# The Queen of Birds
+# The Elevator
 
-An Amnesia: The Dark Descent custom story made over a single weekend.
+An Amnesia: The Dark Descent custom story made in a couple of hours as a challenge.
