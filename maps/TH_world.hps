@@ -168,6 +168,7 @@ void StartBruteRunEvent2(string areaBase) { SetLocalVarInt("BruteRunEvent2", 0);
 // ============================================================================
 void StartTerror()
 {
+    if(PercentageChance(20)) { return; }
     PlaySoundAtEntity("terror", "ui_terror_meter.snt", "Player", 0.0f, false);
     AddTimer("", RandFloat(2.0f, 7.0f), "StopTerror");
 }
@@ -238,9 +239,9 @@ void PlayRandSound(string timer)
 
     if(GetLocalVarInt("StopRandSndFlag") != 0) { return; }
 
-    AddTimer("", RandFloat(1.0f, 3.0f), "PlayRandSound");
+    AddTimer("", RandFloat(0.2f, 1.5f), "PlayRandSound");
 
-    if(PercentageChance(5)) { StartTerror(); }
+    if(PercentageChance(1)) { StartTerror(); }
 }
 
 bool PercentageChance(int percent)
@@ -267,7 +268,7 @@ void RunModularJumpscare(string a, string area, int s)
     FadeGlobalSoundVolume(1.0f, 0.0f);
     string entityBase = area + "_entity_";
     SetEntityActiveByGroup(entityBase, true);
-    PlayGuiSound("ScareGui_" + RandInt(1, 7) + ".ogg", 1.0f);
+    PlayGuiSound("ScareGui_" + RandInt(1, 5) + ".ogg", 1.0f);
     GiveSanityDamage(1.0f, true);
     AddTimer(entityBase, 1.0f, "DisableJumpscare");
 }
