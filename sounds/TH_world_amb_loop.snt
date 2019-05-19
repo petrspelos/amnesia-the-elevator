@@ -4,5 +4,5 @@
   		<Sound File="TH_world_amb_loop" />
   	</Main>
   </SOUNDS>
-  <PROPERTIES Volume="0.8" MinDistance="40" MaxDistance="60" Random="1" Interval="0" FadeEnd="False" FadeStart="False" Stream="True" Loop="True" Use3D="False" Blockable="False" BlockVolumeMul="0.5" Priority="0" />
+  <PROPERTIES Volume="0.2" MinDistance="40" MaxDistance="60" Random="1" Interval="0" FadeEnd="False" FadeStart="False" Stream="True" Loop="True" Use3D="False" Blockable="False" BlockVolumeMul="0.5" Priority="0" />
 </SOUNDENTITY>

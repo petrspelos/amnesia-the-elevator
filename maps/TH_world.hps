@@ -29,6 +29,7 @@ void OnStart()
     AddEntityCollideCallback("Player", "CloseElevatorArea", "CloseElevator", true, 0);
     AddEntityCollideCallback("Player", "FinalArea", "EndGame", true, 0);
     GiveItemFromFile("lantern", "lantern.ent");
+    FadeGlobalSoundVolume(0.5f, 0.0f);
 }
 
 void CloseElevator(string parent, string child, int state)
@@ -263,6 +264,7 @@ void RegisterModularJumpscares()
 
 void RunModularJumpscare(string a, string area, int s)
 {
+    FadeGlobalSoundVolume(1.0f, 0.0f);
     string entityBase = area + "_entity_";
     SetEntityActiveByGroup(entityBase, true);
     PlayGuiSound("ScareGui_" + RandInt(1, 7) + ".ogg", 1.0f);
@@ -281,6 +283,7 @@ void SetEntityActiveByGroup(string base, bool active)
 
 void DisableJumpscare(string base)
 {
+    FadeGlobalSoundVolume(0.5f, 0.0f);
     SetEntityActiveByGroup(base, false);
 }
 
