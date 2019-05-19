@@ -235,6 +235,12 @@ void PlayRandSound(string timer)
     string sound = GetRandomSound();
     string area = GetRandomArea("ScareSound_");
 
+    if(DistanceFrom(area) >= 20.0f)
+    {
+        AddTimer("", 0.01f, "PlayRandSound");
+        return;
+    }
+
     PlaySoundAtEntity("randSound", sound, area, 0.0f, false);
 
     if(GetLocalVarInt("StopRandSndFlag") != 0) { return; }
@@ -247,6 +253,14 @@ void PlayRandSound(string timer)
 bool PercentageChance(int percent)
 {
     return RandInt(1, 100) < percent;
+}
+
+float DistanceFrom(string entity)
+{
+    float a = GetPlayerPosX() - GetEntityPosX(entity);
+    float b = GetPlayerPosZ() - GetEntityPosZ(entity);
+
+    return MathAbs(MathSqrt(MathPow(a, 2) + MathPow(b, 2)));
 }
 
 // ============================================================================
