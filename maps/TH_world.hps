@@ -27,6 +27,7 @@ void OnStart()
     RegisterModularEnemies();
     ElevatorIntro();
     AddEntityCollideCallback("Player", "CloseElevatorArea", "CloseElevator", true, 0);
+    AddEntityCollideCallback("Player", "FinalArea", "EndGame", true, 0);
     GiveItemFromFile("lantern", "lantern.ent");
 }
 
@@ -36,6 +37,11 @@ void CloseElevator(string parent, string child, int state)
     PlayPropAnimation("ElevatorDoor", "Close", 0.0f, false, "");
     PlaySoundAtEntity("", "TH_elevator_door_close.snt", "ElevatorDoor", 0.0f, false);
     SetEntityActive("DoorBlockBox", true);
+}
+
+void EndGame(string parent, string child, int state)
+{
+    StartCredits("TH_elevator_music.ogg", false, "Credits", "Final", 4);
 }
 
 // ============================================================================
