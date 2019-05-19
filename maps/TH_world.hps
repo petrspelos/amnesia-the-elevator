@@ -23,14 +23,17 @@ void OnStart()
     RegisterModularJumpscares();
     RegisterModularHurtscares();
     RegisterModularKeys();
+    RegisterModularWalkRun();
     ElevatorIntro();
     AddEntityCollideCallback("Player", "CloseElevatorArea", "CloseElevator", true, 0);
+    GiveItemFromFile("lantern", "lantern.ent");
 }
 
 void CloseElevator(string parent, string child, int state)
 {
     CheckPoint("", "OutsideElevator", "", "", "");
-    PlayPropAnimation("ElevatorDoor", "Open", 0.0f, false, "");
+    PlayPropAnimation("ElevatorDoor", "Close", 0.0f, false, "");
+    PlaySoundAtEntity("", "TH_elevator_door_close.snt", "ElevatorDoor", 0.0f, false);
     SetEntityActive("DoorBlockBox", true);
 }
 
@@ -103,16 +106,16 @@ void ElevatorIntro() { ElevatorIntro(""); }
 // ============================================================================
 void BruteWalkEvent1(string areaBase)
 {
-    int stage = GetLocalVarInt("BruteWalkEvent1");
-    AddLocalVarInt("BruteWalkEvent1", 1);
+    int stage = GetLocalVarInt("BruteWalkEvent1" + areaBase);
+    AddLocalVarInt("BruteWalkEvent1" + areaBase, 1);
     float delay = 0.0f;
 
-    int iterationNumber = GetLocalVarInt("Event1Iteration");
-    AddLocalVarInt("Event1Iteration", 1);
+    int iterationNumber = GetLocalVarInt("Event1Iteration" + areaBase);
+    AddLocalVarInt("Event1Iteration" + areaBase, 1);
 
-    if(stage < 8)
+    if(stage <= GetEntityCountByBase(areaBase))
     {
-        PlaySoundAtEntity("", "metal_walk.snt", areaBase + "_" + iterationNumber, 0.0f, false);    
+        PlaySoundAtEntity("", "metal_walk.snt", areaBase + iterationNumber, 0.0f, false);    
         delay = 1.5f;
     }
     else
@@ -123,7 +126,7 @@ void BruteWalkEvent1(string areaBase)
     AddTimer(areaBase, delay, "BruteWalkEvent1");
 }
 
-void StartBruteWalkEvent1(string areaBase) { SetLocalVarInt("BruteWalkEvent1", 0); SetLocalVarInt("Event1Iteration", 0); BruteWalkEvent1(areaBase); }
+void StartBruteWalkEvent1(string areaBase) { BruteWalkEvent1(areaBase); }
 
 // ============================================================================
 //  RUN - SCARE EVENT 2
@@ -312,4 +315,23 @@ void UnlockDoor(string item, string entity)
     PlaySoundAtEntity("", "unlock_door.snt", entity, 0.0f, false);
     RemoveItem(item);
     SetSwingDoorLocked(entity, false, true);
+}
+
+// ============================================================================
+//  MODULAR WALK/RUN SYSTEM
+// ============================================================================
+void RegisterModularWalkRun()
+{
+    string areaBase = "FakeWalk_";
+    int count = 1;
+    while(GetEntityExists(areaBase + count))
+    {
+        AddEntityCollideCallback("Player", areaBase + count, "BruteWalkEvent1Proxy", true, 0);
+        count++;
+    }
+}
+
+void BruteWalkEvent1Proxy(string a, string areaBase, int state)
+{
+    BruteWalkEvent1(areaBase + "_step_");
 }
