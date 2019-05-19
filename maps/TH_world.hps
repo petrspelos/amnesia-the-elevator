@@ -24,6 +24,7 @@ void OnStart()
     RegisterModularHurtscares();
     RegisterModularKeys();
     RegisterModularWalkRun();
+    RegisterModularEnemies();
     ElevatorIntro();
     AddEntityCollideCallback("Player", "CloseElevatorArea", "CloseElevator", true, 0);
     GiveItemFromFile("lantern", "lantern.ent");
@@ -334,4 +335,43 @@ void RegisterModularWalkRun()
 void BruteWalkEvent1Proxy(string a, string areaBase, int state)
 {
     BruteWalkEvent1(areaBase + "_step_");
+}
+
+// ============================================================================
+//  MODULAR ENEMY PATROL
+// ============================================================================
+void RegisterModularEnemies()
+{
+    string areaBase = "EnemyPatrol_";
+    int count = 1;
+    while(GetEntityExists(areaBase + count))
+    {
+        AddEntityCollideCallback("Player", areaBase + count, "EnableModularEnemy", true, 0);
+        count++;
+    }
+}
+
+void EnableModularEnemy(string a, string areaBase, int state)
+{
+    SetEntityActive(areaBase + "_enemy", true);
+    //int nodeCount = GetEntityCountByBase(areaBase + "_node_");
+    //for(int i = 1; i < nodeCount; i++)
+    int nodeCount = 50;
+    for(int i = 1; i < nodeCount; i++)
+    {
+        AddEnemyPatrolNode(areaBase + "_enemy", areaBase + "_node_" + i, 0.0001f, "");
+    }
+
+    // After patrol is done, do a bunch of random walks
+    for(int i = 0; i < 500; i++)
+    {
+        AddEnemyPatrolNode(areaBase + "_enemy", areaBase + "_node_" + RandInt(1, nodeCount), RandFloat(1.0f, 5.0f), "");
+    }
+}
+
+void Respawn(string enemy, string type)
+{
+    if(type != "OnAutoDisabled") { return; }
+    SetEntityActive(enemy, true);
+    AlertEnemyOfPlayerPresence(enemy);
 }
